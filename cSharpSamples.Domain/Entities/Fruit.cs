@@ -5,18 +5,22 @@ using cSharpSamples.Domain.DTO;
 
 namespace cSharpSamples.Domain.Entities
 {
-    public class Fruit : Entity, IFruit, IEquatable<Fruit>
+    public class Fruit : Entity, IEngredient, IEquatable<Fruit>
     {
-        private string? _FruitName;
+        private string? _IngredientName;
+        private IngredientType _IngredientType = IngredientType.Fruit;
         private FruitType _FruitType;
 
-        public Fruit(string? FruitName, FruitType FruitType)
+        public Fruit() { }  
+
+        public Fruit(string? IngredientName, FruitType FruitType)
         {
-            _FruitName = FruitName;
+            _IngredientName = IngredientName;
             _FruitType = FruitType;
         }
 
-        public string FruitName { get => _FruitName ?? string.Empty; set => _FruitName = value; }
+        public string IngredientName { get => _IngredientName ?? string.Empty; set => _IngredientName = value; }
+        public IngredientType IngredientType { get; set; }
         public FruitType FruitType { get => _FruitType; set => _FruitType = value; }
 
 
@@ -29,7 +33,7 @@ namespace cSharpSamples.Domain.Entities
         {
             if (ReferenceEquals(other, null)) return false;
             if (ReferenceEquals(other, this)) return true;
-            return string.Equals(_FruitName, other.FruitName);
+            return string.Equals(_IngredientName, other.IngredientName);
         }
 
         public override bool Equals(object? obj)
@@ -41,17 +45,17 @@ namespace cSharpSamples.Domain.Entities
 
         public override int GetHashCode()
         {
-            return _FruitName?.GetHashCode() ?? 0;
+            return IngredientName?.GetHashCode() ?? 0;
         }
 
         public static bool operator ==(Fruit left, Fruit right)
         {
-            return left.FruitName == right.FruitName && left.FruitType == right.FruitType;
+            return left.IngredientName == right.IngredientName && left.FruitType == right.FruitType;
         }
 
         public static bool operator !=(Fruit left, Fruit right)
         {
-            return left.FruitName != right.FruitName || left.FruitType != right.FruitType;
+            return left.IngredientName != right.IngredientName || left.FruitType != right.FruitType;
         }
 
 
@@ -63,12 +67,12 @@ namespace cSharpSamples.Domain.Entities
 
         public static explicit operator String(Fruit fruit) 
         { 
-            return fruit.FruitName;
+            return fruit.IngredientName;
         }
 
         public override string ToString()
         {
-            return this.FruitName;
+            return this.IngredientName;
         }
 
     }

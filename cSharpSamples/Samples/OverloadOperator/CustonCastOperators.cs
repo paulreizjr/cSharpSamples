@@ -28,7 +28,7 @@ namespace cSharpSamples.Samples.OverloadOperator
 
             Console.WriteLine("orange type - " + orange.GetType());
             Console.WriteLine("orangeDTO type - " + orangeDTO.GetType());
-            Console.WriteLine(orangeDTO.FruitName);
+            Console.WriteLine(orangeDTO.IngredientName);
             Console.WriteLine(explicitFruitName);
             Console.WriteLine(orange.ToString());
 

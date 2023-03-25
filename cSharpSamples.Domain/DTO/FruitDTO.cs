@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace cSharpSamples.Domain.DTO
 {
-    public class FruitDTO : IFruit
+    public class FruitDTO : IEngredient
     {
-        public string? FruitName { get; set; }
-
+        public string IngredientName { get; set; }
+        public IngredientType IngredientType { get; set; }
         public FruitType FruitType { get; set; }
 
         public FruitDTO(Fruit fruit) 
         {
-            FruitName = fruit.FruitName;
+            IngredientName = fruit.IngredientName;
             FruitType = fruit.FruitType;
         }
         
