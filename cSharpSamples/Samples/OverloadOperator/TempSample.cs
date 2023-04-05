@@ -32,11 +32,18 @@ namespace cSharpSamples.Samples.OverloadOperator
             Console.WriteLine("---------");
             Console.WriteLine(testeGeneric("1").ToString());
 
-            Fruit orange = IngredientFactory<Fruit>.MakeProduct("Orange", FruitType.citrus);
+            Fruit orange = IngredientFactory.MakeProduct<Fruit>("Orange", FruitType.citrus);
 
             Console.WriteLine(orange.ToString());   
 
+            Console.WriteLine(IsTypeNullable<int?>());
+
             return "ok...";
+        }
+
+        public bool IsTypeNullable<T>()
+        {
+            return Nullable.GetUnderlyingType(typeof(T)) != null;
         }
 
         List<T> CreateList<T>(params T[] items)
